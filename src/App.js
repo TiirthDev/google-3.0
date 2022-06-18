@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Footer } from "./components/Footer";
+import { Navbar } from "./components/Navbar";
+import { RoutesHandler } from "./components/RoutesHandler";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 function App() {
+
+  const [darkTheme, setDarkTheme] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={darkTheme ? 'bg-gray-900 text-gray-200 min-h-screen dark' : 'bg-gray-100 min-h-screen '}>
+      <div>
+        <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
+        <RoutesHandler darkTheme={darkTheme} />
+        <Footer darkTheme={darkTheme} />
+      </div>
     </div>
   );
 }
